@@ -10,14 +10,24 @@ module.exports = {
       testMatch: ['<rootDir>/server/tests/**/*.test.js'],
       moduleFileExtensions: ['js', 'json', 'node'],
       setupFilesAfterEnv: ['<rootDir>/server/tests/setup.js'],
+      testTimeout: 10000,
       coverageDirectory: '<rootDir>/coverage/server',
       collectCoverageFrom: [
         'server/src/**/*.js',
         '!server/src/config/**',
+        '!server/src/server.js',
         '!**/node_modules/**',
       ],
+      coverageThreshold: {
+        global: {
+          branches: 60,
+          functions: 70,
+          lines: 70,
+          statements: 70,
+        },
+      }
     },
-    
+
     // Client-side tests configuration
     {
       displayName: 'client',
@@ -36,11 +46,20 @@ module.exports = {
       collectCoverageFrom: [
         'client/src/**/*.{js,jsx}',
         '!client/src/index.js',
+        '!client/src/reportWebVitals.js',
         '!**/node_modules/**',
       ],
+      coverageThreshold: {
+        global: {
+          branches: 60,
+          functions: 70,
+          lines: 70,
+          statements: 70,
+        },
+      }
     },
   ],
-  
+
   // Global configuration
   verbose: true,
   collectCoverage: true,
@@ -54,4 +73,5 @@ module.exports = {
     },
   },
   testTimeout: 10000,
-}; 
+  bail: false,
+};

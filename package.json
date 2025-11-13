@@ -11,8 +11,12 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:unit": "jest --testPathPattern=unit",
-    "test:integration": "jest --testPathPattern=integration"
+    "test:unit": "jest --testPathPattern='(unit|utils)' --coverage",
+    "test:integration": "jest --testPathPattern='integration' --coverage",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "test:server": "cd server && npm test",
+    "test:client": "cd client && npm test",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
